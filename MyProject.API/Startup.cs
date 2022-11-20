@@ -16,7 +16,9 @@ using MyProject.Services.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Threading.Tasks;
+using AutoMapper;
 
 namespace MyProject.API
 {
@@ -49,8 +51,7 @@ namespace MyProject.API
             services.AddScoped<IRoleService, RoleService>();
             services.AddScoped<IPermissionService,PermissionService>();
             services.AddScoped<IClaimService, ClaimService>(); 
-
-            services.AddScoped<IPermission, PermissionRepository>();
+            services.AddScoped<IPermissionRepository, PermissionRepository>();
             services.AddScoped<IClaimRepository, ClaimRepository>();
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddSingleton<IContext, MockContext>();

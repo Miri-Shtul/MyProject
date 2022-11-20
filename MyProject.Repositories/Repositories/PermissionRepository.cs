@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyProject.Repositories.Repositories
 {
-    public class PermissionRepository : IPermission
+    public class PermissionRepository : IPermissionRepository
     {
         private readonly IContext _context;
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyProject.Services.Interfaces
 {
-    interface IClaimService
+    public interface IClaimService
     {
         List<ClaimDTO> GetList();
         ClaimDTO GetById(int id);
