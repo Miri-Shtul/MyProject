@@ -9,14 +9,14 @@ namespace MyProject.Repositories.Interfaces
 {
     public interface IRoleRepository
     {
-        List<Role> GetAll();
+        Task<List<Role>> GetAllAsync();
 
-        Role GetById(int id);
+        Task<Role> GetByIdAsync(int id);
 
-        Role Add(int id, string name, string description);
+        Task<Role> AddAsync(int id, string name, string description);
 
-        Role Update(Role role);
+        Task<Role> UpdateAsync(Role role);
 
-        void Delete(int id);
+        Task DeleteAsync(int id);
     }
 }

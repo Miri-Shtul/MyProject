@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MyProject.Common.DTOs;
+using MyProject.Repositories.Entities;
 using MyProject.Repositories.Interfaces;
 using MyProject.Repositories.Repositories;
 using MyProject.Services.Interfaces;
@@ -20,13 +21,31 @@ namespace MyProject.Services.Services
             _permissionRepository = permissionRepository;
             _mapper = mapper;
         }
-        public PermissionDTO GetById(int id)
+
+        public async Task<PermissionDTO> AddAsync(int id, string name, string description)
         {
-            return _mapper.Map<PermissionDTO>(_permissionRepository.GetById(id));
+            return _mapper.Map<Permission, PermissionDTO>(await _permissionRepository.AddeAsync(id, name, description));
         }
-        public List<PermissionDTO> GetList()
+
+        public async Task deleteAsync(int id)
         {
-            return _mapper.Map<List<PermissionDTO>>(_permissionRepository.GetAll());
+           await _permissionRepository.DeleteAsync(id);
+        }
+
+        public async Task<List<PermissionDTO>> GetAllAsync()
+        {
+            return _mapper.Map<List<PermissionDTO>>(await _permissionRepository.GetAlleAsync());
+        }
+
+        public async Task<PermissionDTO> GetByIdAsync(int id)
+        {
+            return _mapper.Map<PermissionDTO>(await _permissionRepository.GetByIdeAsync(id));
+        }
+
+       
+        public async Task<PermissionDTO> UpdateAsync(PermissionDTO permission)
+        {
+            return _mapper.Map<Permission, PermissionDTO>(await _permissionRepository.UpdateeAsync(_mapper.Map<Permission>(permission)));
         }
     }
 }

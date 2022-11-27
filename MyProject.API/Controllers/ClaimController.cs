@@ -22,15 +22,15 @@ namespace MyProject.API.Controllers
             _claimRepository = claim;
         }
         [HttpGet]
-        public List<Claim> Get()
+        public async Task<List<Claim>> Get()
         {
-            return _claimRepository.GetAll();
+            return await _claimRepository.GetAllAsync();
         }
 
         [HttpGet("{id}")]
-        public Claim Get(int id)
+        public async Task<Claim> Get(int id)
         {
-            return _claimRepository.GetById(id);
+            return await _claimRepository.GetByIdAsync(id);
         }
     }
 }

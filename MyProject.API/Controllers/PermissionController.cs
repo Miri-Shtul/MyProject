@@ -7,6 +7,7 @@ using MyProject.Repositories.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using System.Threading.Tasks;
 
 namespace MyProject.API.Controllers
@@ -15,21 +16,21 @@ namespace MyProject.API.Controllers
     [ApiController]
     public class PermissionController : ControllerBase
     {
-        private readonly IPermission _permissionRepository;
-        public PermissionController(IPermission permissionRepository)
+        private readonly IPermissionRepository _permissionRepository;
+        public PermissionController(IPermissionRepository permissionRepository)
         {
             
             _permissionRepository = permissionRepository;
         }
         [HttpGet]
-        public List<Permission> Get()
+        public async  Task<List<Permission>> Get()
         {
-            return _permissionRepository.GetAll();
+            return await _permissionRepository.GetAllAsync();
         }
         [HttpGet("{id}")]
-        public Permission Get(int id)
+        public async Task<Permission> Get(int id)
         {
-            return _permissionRepository.GetById(id);
+            return await _permissionRepository.GetByIdeAsync(id);
         }
     }
 }

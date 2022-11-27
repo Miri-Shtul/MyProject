@@ -9,14 +9,14 @@ namespace MyProject.Repositories.Interfaces
 {
    public  interface IPermissionRepository
     {
-        List<Permission> GetAll();
+        Task<List<Permission>> GetAllAsync();
 
-        Permission GetById(int id);
+        Task<Permission> GetByIdeAsync(int id);
 
-        Permission Add(int id, string name, string description);
+        Task<Permission> AddeAsync(int id, string name, string description);
 
-        Permission Update(Permission permission);
+        Task<Permission> UpdateeAsync(Permission permission);
 
-        void Delete(int id);
+        Task DeleteAsync(int id);
     }
 }

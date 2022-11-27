@@ -9,8 +9,10 @@ namespace MyProject.Services.Interfaces
 {
     public interface IRoleService
     {
-        List<PermissionDTO> GetList();
-
-        PermissionDTO GetById(int id);
+        Task<List<RoleDTO>> GetAllAsync();
+        Task<RoleDTO> GetByIdAsync(int id);
+        Task<RoleDTO> AddAsync(int id, string name, string description);
+        Task<RoleDTO> UpdateAsync(RoleDTO role);
+        Task DeleteAsync(int id);
     }
 }

@@ -9,8 +9,13 @@ namespace MyProject.Services.Interfaces
 {
     public interface IPermissionService
     {
-        List<PermissionDTO> GetList();
+      
+        Task<List<PermissionDTO>> GetAllAsync();
 
-        PermissionDTO GetById(int id);
+        Task<PermissionDTO> GetByIdAsync(int id);
+        Task<PermissionDTO> AddAsync(int id, string name, string description);
+        Task<PermissionDTO> UpdateAsync(PermissionDTO permission);
+
+        Task deleteAsync(int id);
     }
 }

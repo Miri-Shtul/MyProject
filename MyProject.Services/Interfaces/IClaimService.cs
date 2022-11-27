@@ -9,7 +9,10 @@ namespace MyProject.Services.Interfaces
 {
     public interface IClaimService
     {
-        List<ClaimDTO> GetList();
-        ClaimDTO GetById(int id);
+        Task<List<ClaimDTO>> GetAllAsync();
+        Task<ClaimDTO> GetByIdAsync(int id);
+        Task<ClaimDTO> AddAsync(int id, int roleId, int permissionId, EPolicy policy);
+        Task<ClaimDTO> UpdateAsync(ClaimDTO claim);
+        Task DeleteAsync(int id);
     }
 }

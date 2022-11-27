@@ -13,10 +13,11 @@ namespace MyProject.Services
     {
         public Mapping()
         {
-            CreateMap<Role, PermissionDTO>()
-                .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Description))
-                .ReverseMap();
-                       
+            CreateMap<Role,RoleDTO>().ReverseMap();
+            CreateMap<Claim,ClaimDTO>().ReverseMap();
+            CreateMap<Permission, PermissionDTO>().ReverseMap();
+            CreateMap<MyProject.Repositories.Entities.EPolicy, MyProject.Common.DTOs.EPolicy>().ReverseMap();
+
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using MyProject.Repositories.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using MyProject.Repositories.Entities;
 using MyProject.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -18,33 +19,35 @@ namespace MyProject.Repositories.Repositories
             _context = context;
         }
 
-        public Role Add(int id, string name, string description)
+        public async Task<Role> AddAsync(int id, string name, string description)
         {
-            Role r=new Role(){Id= id,Name= name,Description= description };
-            _context.Roles.Add(r);
-            return r;
+            var r= _context.Roles.Add(new Role {Id= id,Name= name,Description= description });
+            await _context.SaveChangesAsync();
+            return r.Entity;
         }
 
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {
-            _context.Roles.Remove(GetById(id));
+            _context.Roles.Remove(await GetByIdAsync(id));
+            await _context.SaveChangesAsync();
         }
 
-        public List<Role> GetAll()
+        public async Task<List<Role>> GetAllAsync()
         {
-            return _context.Roles;
+            return await _context.Roles.ToListAsync();
         }
 
-        public Role GetById(int id)
+        public async Task<Role> GetByIdAsync(int id)
         {
-            return _context.Roles.Find(r => r.Id == id);
+            return await _context.Roles.FindAsync(id);
         }
 
-        public Role Update(Role role)
+        public async Task<Role> UpdateAsync(Role role)
         {
-            Role r = GetById(role.Id);
+            var r = await GetByIdAsync(role.Id);
             r.Name = role.Name;
-           r.Description = role.Description;
+            r.Description = role.Description;
+            await _context.SaveChangesAsync();
             return r;
         }
     }

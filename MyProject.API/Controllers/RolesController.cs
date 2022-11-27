@@ -23,26 +23,26 @@ namespace MyProject.API.Controllers
             _roleRepository = roleRepository;
         }
         [HttpGet]
-        public List<Role> Get()
+        public async Task<List<Role>> Get()
         {
-            return _roleRepository.GetAll();
+            return await _roleRepository.GetAllAsync();
         }
 
         [HttpGet("{id}")]
-        public Role Get(int id)
+        public async Task<Role> Get(int id)
         {
-            return _roleRepository.GetById(id);
+            return await _roleRepository.GetByIdAsync(id);
         }
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
-            _roleRepository.Delete(id);
+            await _roleRepository.DeleteAsync(id);
         }
         [HttpPut]
        
-        public void Put([FromBody] Role role)
+        public async Task Put([FromBody] Role role)
         {
-            _roleRepository.Update(role);
+           await _roleRepository.UpdateAsync(role);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using MyProject.Repositories.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using MyProject.Repositories.Entities;
 using MyProject.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -16,33 +17,35 @@ namespace MyProject.Repositories.Repositories
         {
             _context = context;
         }
-        public Permission Add(int id, string name, string description)
+        public async Task<Permission> AddAsync(int id, string name, string description)
         {
-            Permission p = new Permission() { Id = id, Name = name, Description = description };
-            _context.Permissions.Add(p);
-            return p;
+           var p = _context.Permissions.Add( new Permission (){ Id = id, Name = name, Description = description });
+            await _context.SaveChangesAsync();
+            return p.Entity;
         }
     
 
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {
-            _context.Permissions.Remove(GetById(id));
+            _context.Permissions.Remove(await GetByIdAsync(id));
+            await _context.SaveChangesAsync();
         }
 
-        public List<Permission> GetAll()
+        public async Task<List<Permission>> GetAllAsync()
         {
-            return _context.Permissions;
+            return await _context.Permissions.ToListAsync();
         }
 
-        public Permission GetById(int id)
+        public async Task<Permission> GetByIdAsync(int id)
         {
-            return _context.Permissions.Find(p => p.Id == id);
+            return await _context.Permissions.FindAsync(id);
         }
-        public Permission Update(Permission permission)
+        public async Task<Permission> UpdateAsync(Permission permission)
         {
-            Permission p = GetById(permission.Id);
+            var p =await GetByIdAsync(permission.Id);
             p.Name = permission.Name;
             p.Description = permission.Description;
+            await _context.SaveChangesAsync();
             return p;
         }
     }
