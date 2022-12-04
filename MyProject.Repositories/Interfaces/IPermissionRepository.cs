@@ -11,11 +11,11 @@ namespace MyProject.Repositories.Interfaces
     {
         Task<List<Permission>> GetAllAsync();
 
-        Task<Permission> GetByIdeAsync(int id);
+        Task<Permission> GetByIdAsync(int id);
 
-        Task<Permission> AddeAsync(int id, string name, string description);
+        Task<Permission> AddAsync(int id, string name, string description);
 
-        Task<Permission> UpdateeAsync(Permission permission);
+        Task<Permission> UpdateAsync(Permission permission);
 
         Task DeleteAsync(int id);
     }

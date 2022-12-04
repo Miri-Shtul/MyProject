@@ -30,7 +30,7 @@ namespace MyProject.API.Controllers
         [HttpGet("{id}")]
         public async Task<Permission> Get(int id)
         {
-            return await _permissionRepository.GetByIdeAsync(id);
+            return await _permissionRepository.GetByIdAsync(id);
         }
     }
 }

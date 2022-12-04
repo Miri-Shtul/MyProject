@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace MyProject.Repositories.Interfaces
@@ -15,6 +16,6 @@ namespace MyProject.Repositories.Interfaces
         DbSet<Permission> Permissions { get; set; }
 
         DbSet<Claim> Claims { get; set; }
-        Task<int> SaveChangesAsync();
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
 }

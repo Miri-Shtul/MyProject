@@ -24,7 +24,7 @@ namespace MyProject.Services.Services
 
         public async Task<PermissionDTO> AddAsync(int id, string name, string description)
         {
-            return _mapper.Map<Permission, PermissionDTO>(await _permissionRepository.AddeAsync(id, name, description));
+            return _mapper.Map<Permission, PermissionDTO>(await _permissionRepository.AddAsync(id, name, description));
         }
 
         public async Task deleteAsync(int id)
@@ -34,18 +34,18 @@ namespace MyProject.Services.Services
 
         public async Task<List<PermissionDTO>> GetAllAsync()
         {
-            return _mapper.Map<List<PermissionDTO>>(await _permissionRepository.GetAlleAsync());
+            return _mapper.Map<List<PermissionDTO>>(await _permissionRepository.GetAllAsync());
         }
 
         public async Task<PermissionDTO> GetByIdAsync(int id)
         {
-            return _mapper.Map<PermissionDTO>(await _permissionRepository.GetByIdeAsync(id));
+            return _mapper.Map<PermissionDTO>(await _permissionRepository.GetByIdAsync(id));
         }
 
        
         public async Task<PermissionDTO> UpdateAsync(PermissionDTO permission)
         {
-            return _mapper.Map<Permission, PermissionDTO>(await _permissionRepository.UpdateeAsync(_mapper.Map<Permission>(permission)));
+            return _mapper.Map<Permission, PermissionDTO>(await _permissionRepository.UpdateAsync(_mapper.Map<Permission>(permission)));
         }
     }
 }

@@ -19,6 +19,7 @@ using System.Linq;
 using System.Security;
 using System.Threading.Tasks;
 using AutoMapper;
+using MyProject.Context;
 
 namespace MyProject.API
 {
@@ -54,7 +55,8 @@ namespace MyProject.API
             services.AddScoped<IPermissionRepository, PermissionRepository>();
             services.AddScoped<IClaimRepository, ClaimRepository>();
             services.AddScoped<IRoleRepository, RoleRepository>();
-            services.AddSingleton<IContext, MockContext>();
+            services.AddDbContext<IContext, MyDbContext>();
+         //   services.AddSingleton<IContext, MockContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

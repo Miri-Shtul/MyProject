@@ -44,7 +44,7 @@ namespace MyProject.Services.Services
 
         public async Task<RoleDTO> UpdateAsync(RoleDTO role)
         {
-            return _mapper.Map<RoleDTO>(await _roleRepository.UpdateAsync(_mapper.Map<Role>(role));
+            return _mapper.Map<RoleDTO>(await _roleRepository.UpdateAsync(_mapper.Map<Role>(role)));
         }
     }
 }

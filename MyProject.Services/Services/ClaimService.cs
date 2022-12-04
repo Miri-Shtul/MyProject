@@ -34,7 +34,7 @@ namespace MyProject.Services.Services
 
         public async Task<List<ClaimDTO>> GetAllAsync()
         {
-            return _mapper.Map<List<ClaimDTO>>(await _claimRepository.GetAllAsync())
+            return _mapper.Map<List<ClaimDTO>>(await _claimRepository.GetAllAsync());
         }
 
         public async Task<ClaimDTO> GetByIdAsync(int id)

@@ -19,8 +19,8 @@ namespace MyProject.ConsoleApp
                 Console.WriteLine(r.ToString());
             });
 
-            var roleRepository = new RoleRepository(db);
-            roleRepository.GetAll();
+          //  var roleRepository = new RoleRepository(db);
+           // roleRepository.GetAll();
 
             Console.ReadLine();
         }
